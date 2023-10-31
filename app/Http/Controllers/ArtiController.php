@@ -46,7 +46,7 @@ class ArtiController extends Controller
         // $article->save();
         // return redirect('/articles');
 
-        $request->merge(['user_id' => 1]);
+        $request->merge(['user_id' => Auth::user()->id]);
         Article::create($request->all());
         return redirect('/articles');
     }
@@ -80,16 +80,24 @@ class ArtiController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // return $request;
         // $post = Post::find($id);
         // $post->title = $request->title;
         // $post->content = $request->content; //$request->input("content)
 
         // $post->save(); //새로적을때, 있던것을 변경할때 모두 save
 
-        Article::where('id', $id)->update(['title' => $request->title, 'content' => $request->content, 'region'=>$request->region]);
+        Article::find($id)->update(['title' => $request->title,
+                                    'content' => $request->content,
+                                    'region'=>$request->region,
+                                    'numberPeople'=>$request->numberPeople,
+                                    'startDay'=>$request->startDay,
+                                    'returnDay'=>$request->returnDay]);
 
         return redirect('/articles/' . $id);
     }
+
+
 
     /**
      * Remove the specified resource from storage.

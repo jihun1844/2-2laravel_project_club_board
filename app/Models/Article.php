@@ -20,6 +20,6 @@ class Article extends Model
     //     'content',
     // ];
 
-    protected $fillable = ['title', 'content', 'region', 'user_id']; //화이트 리스트
-    // protected $guarded = ['created_at', 'updated_at'];//블랙 리스트
+    protected $fillable = ['title', 'content', 'region', 'user_id' , 'startDay', 'returnDay','numberPeople']; //화이트 리스트
+    //protected $guarded = ['created_at', 'updated_at'];//블랙 리스트
 }

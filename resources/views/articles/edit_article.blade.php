@@ -51,30 +51,43 @@
 <form action="/articles/{{$article->id}}" method="POST">
 @csrf
 @method("put")
+  <input type="text" name="hello" value="hi">
 
-<div class = "form-group"> 
-<label>제목:</label><input type ="text" name ="title" value="{{$article->title}}"/>
-</div>
-
-<div class = "form-group"> 
-<label>작성자:</label><input readonly type ="text" value="{{$article->user_id}}"/>
-</div>
-
-<div class = "form-group"> 
-  <label>지역:</label><input type ="text" value="{{$article->region}}"/>
+  <div class = "form-group"> 
+    <label>제목:</label><input type ="text" name ="title" value="{{$article->title}}"/>
   </div>
 
-<div class = "form-group"> 
-  <label>내용:</label><textarea name ="content">{{$article->content}}</textarea>
+  <div class = "form-group"> 
+    <label>작성자:</label><input readonly type ="text" value="{{$article->user_id}}"/>
   </div>
 
-<div class = "form-group"> 
-<label>생성일:</label><input readonly type ="text" value="{{$article->created_at}}"/>
-</div>
+  <div class = "form-group"> 
+    <label>지역:</label><input name="region" type ="text" value="{{$article->region}}"/>
+  </div>
 
-<div class = "form-group"> 
-<label>수정일:</label><input readonly type ="text" value="{{$article->updated_at}}"/>
-</div>
+  <div class = "form-group"> 
+    <label>인원수:</label><input name="numberPeople" type ="text" value="{{$article->numberPeople}}"/>
+  </div>
+
+  <div class = "form-group"> 
+    <label>출발 날짜:</label><input name="startDay" type ="date" value="{{$article->startDay}}"/>
+  </div>
+
+  <div class = "form-group"> 
+    <label>돌아오는 날짜:</label><input name="returnDay" type ="date" value="{{$article->returnDay}}"/>
+  </div>
+
+  <div class = "form-group"> 
+    <label>내용:</label><textarea name ="content">{{$article->content}}</textarea>
+  </div>
+
+  <div class = "form-group"> 
+  <label>생성일:</label><input readonly type ="text" value="{{$article->created_at}}"/>
+  </div>
+
+  <div class = "form-group"> 
+  <label>수정일:</label><input readonly type ="text" value="{{$article->updated_at}}"/>
+  </div>
 
 <div class = "form-group"> 
 <input type ="submit" value ="수정"/>

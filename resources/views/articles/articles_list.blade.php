@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>글 리스트</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -69,6 +69,7 @@
         <td>{{$loop->index+1}}</td>
         <td><a href="/articles/{{$article->id}}">{{$article->title}}</a></td>
         <td>{{$article->user_id}}</td>
+        <td>{{$article->startDay}}</td>
       </tr>
       @endforeach
     </tbody>

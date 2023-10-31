@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('region');
             $table->text('content');
+            $table->text('numberPeople');
+            $table->date('startDay');
+            $table->date('returnDay');
             
             $table -> foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

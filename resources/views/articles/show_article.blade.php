@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
-  <title>Document</title>
+  <title>글 확인하기</title>
   
 <style>
   .container {
@@ -61,23 +60,35 @@
   <div class="content title">
     제목 : {{$article->title}}
   </div>
-
   <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
 
   <div class = "content info"> 
     지역 : {{$article->region}}
   </div>
-
   <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
 
   <div class = "content info"> 
     작성자 : {{$article->user_id}}
   </div>
-
   <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
 
   <div class = "content info"> 
-    내용 : {{$article->content}}
+    인원수 : {{$article->numberPeople}}
+  </div>
+  <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
+
+  <div class = "content info"> 
+    출발날짜 : {{$article->startDay }}
+  </div>
+  <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
+
+  <div class = "content info"> 
+    돌아오는 날짜 : {{$article->returnDay }}
+  </div>
+  <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
+
+  <div class = "content info"> 
+    내용 : 
     <textarea rows = "5" readonly class ="content-textarea">{{$article->content}}</textarea>
   </div>
 
