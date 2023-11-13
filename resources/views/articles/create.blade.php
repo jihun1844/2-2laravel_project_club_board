@@ -19,13 +19,13 @@
 @csrf
 
     <div class="mb-4">
-    <label class="block font-semibold mb-2" for="name">제목:</label>
-    <input class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" type="text" name="title" required>
+        <label class="block font-semibold mb-2" for="name">제목:</label>
+        <input class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" type="text" name="title" required>
     </div>
 
-    <div class="mb-4"> 
-    <label class="block font-semibold mb-2">지역:</label>
-    <input class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" type="text" name="region" required>
+    <div class="mb-4">  
+        <label class="block font-semibold mb-2">지역:</label>
+        <input class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" type="text" name="region" required>
     </div>
 
     <div class="mb-4"> 
@@ -44,13 +44,14 @@
     </div>
 
     <div class="mb-4"> 
-    <label class="block font-semibold mb-2">내용:</label>
-    <textarea style="border: 3px solid" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" name="content" rows="7" required></textarea>
+        <label class="block font-semibold mb-2">내용:</label>
+        <textarea style="border: 3px solid" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" name="content" rows="7" required></textarea>
     </div>
 
 
 
-    <button class="w-full bg-blue-500 text-white py-2 px-4 rounded-md font-semibold" type="submit">등록</button>
+    <button class="inline-block bg-blue-500 text-white py-2 px-4 rounded-md font-semibold " type="submit">등록</button>
+
 </form>
 
 </div> 

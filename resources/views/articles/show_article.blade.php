@@ -1,147 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7" rel="stylesheet">
-  <title>글 확인하기</title>
-  
-<style>
-  .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-  }
-
-  .content {
-      margin-bottom: 20px;
-  }
-
-  .title {
-      font-size: 24px;
-      font-weight: bold;
-  }
-
-  .info {
-      font-size: 16px;
-  }
-
-  .author {
-      color: #666666;
-  }
-
-  .date {
-      color: #999999;
-  }
-
-
-  .button-container form,
-  .button-container a {
-    display:inline-block; /* 버튼들을 가로로 나열 */
-    margin-right :10px; /* 버튼 사이의 간격 조정 */
-  }
-
-  .divider-line {
-      border-top: 1px solid black; /* 검은 실선 */
-  }
-  .content-textarea { /* 내용(content) 칸 스타일 */
-    width :100%;
-    height :200px; /* 원하는 높이로 조정 */
-    padding :10px; 
-    resize :none; /* 크기 조절 비활성화 */
-  }
-  .comment-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  .comment-container form {
-    margin-top: 10px;
-  }
-  .comment-container{
-    float: right;
-  }
- 
-  
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7" rel="stylesheet">
+    <title>글 확인하기</title>
 </head>
-<body>
-  <div class="comment-container">
-    <hr>
-    <h4>댓글등록</h4>
-    <form action="/articles/{{$article->id}}/comments" method="post">
-      @csrf
-      <div>
-        <textarea name="content" id="" cols="30" rows="1"></textarea>
-      </div>
-      <input type="submit" value="등록">
-      
-    </form>
-  </div>
 
-  <div class="container">
-    <div class="content title">
-      제목 : {{$article->title}}
-    </div>
-    <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
+<body class="font-sans bg-gray-100">
 
-    <div class = "content info"> 
-      지역 : {{$article->region}}
-    </div>
-    <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
+    @extends('layouts.menuNavigation')
 
-    <div class = "content info"> 
-      작성자 : {{$article->user_id}}
-    </div>
-    <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
-
-    <div class = "content info"> 
-      인원수 : {{$article->numberPeople}}
-    </div>
-    <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
-
-    <div class = "content info"> 
-      출발날짜 : {{$article->startDay }}
-    </div>
-    <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
-
-    <div class = "content info"> 
-      돌아오는 날짜 : {{$article->returnDay }}
-    </div>
-    <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
-
-    <div class = "content info"> 
-      내용 : 
-      <textarea rows = "5" readonly class ="content-textarea">{{$article->content}}</textarea>
+    @section('content')
+    <!-- 페이지 내용 작성 -->
+    <div class="comment-container flex flex-col items-end">
+        <hr class="border-t-2 my-4">
+        <h4 class="mb-2">댓글등록</h4>
+        <form action="/articles/{{$article->id}}/comments" method="post">
+            @csrf
+            <div>
+                <textarea name="content" id="" cols="30" rows="1"
+                    class="w-full p-2 border rounded"></textarea>
+            </div>
+            <input type="submit" value="등록"
+                class="mt-2 px-4 py-2 text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-600 transition duration-300">
+        </form>
     </div>
 
-    <hr class = "divider-line"> <!-- 구역을 나누는 검은 실선 -->
+    <div class="container max-w-2xl mx-auto p-8 bg-white shadow-md rounded-lg my-8">
+        <div class="content title text-3xl font-bold mb-4">
+            제목 : {{$article->title}}
+        </div>
+        <hr class="border-t-2 my-4">
 
-    <div class = "content info"> 
-      생성일 : {{$article->created_at}}
-    </div>
+        <div class="content info text-lg mb-4">
+            지역 : {{$article->region}}
+        </div>
+        <hr class="border-t-2 my-4">
 
+        <div class="content info text-lg mb-4">
+            작성자 : {{$article->user_id}}
+        </div>
+        <hr class="border-t-2 my-4">
 
-    <form action="/articles/{{$article->id}}/edit" method="get" class= "button-container">
-      <input type ="submit" value ="수정"/>
-    </form>
+        <div class="content info text-lg mb-4">
+            인원수 : {{$article->numberPeople}}
+        </div>
+        <hr class="border-t-2 my-4">
 
-    <form onsubmit='return confirm("정말 삭제 할꺼?")' action="/articles/{{$article->id}}" method ="post" class= "button-container">
-      @csrf
-      @method("delete")
-      <input type ="submit" value ="삭제"/>
+        <div class="content info text-lg mb-4">
+            출발날짜 : {{$article->startDay }}
+        </div>
+        <hr class="border-t-2 my-4">
 
-      <a href="/articles">돌아가기 </a>
-    </form>
- </div> <!-- .container -->
+        <div class="content info text-lg mb-4">
+            돌아오는 날짜 : {{$article->returnDay }}
+        </div>
+        <hr class="border-t-2 my-4">
 
- 
-  
+        <div class="content info mb-4">
+            내용 : <textarea rows="5" readonly
+                class="w-full p-2 border rounded content-textarea">{{$article->content}}</textarea>
+        </div>
 
- </body>
- </html>
+        <hr class="border-t-2 my-4">
 
+        <div class="content info text-lg mb-4">
+            생성일 : {{$article->created_at}}
+        </div>
 
+        <div class="flex justify-end mt-4 space-x-2">
+            <form action="/articles/{{$article->id}}/edit" method="get">
+                <button type="submit"
+                    class="px-4 py-2 text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-600 transition duration-300">
+                    수정
+                </button>
+            </form>
+
+            <form onsubmit='return confirm("정말 삭제 할꺼?")' action="/articles/{{$article->id}}" method="post">
+                @csrf
+                @method("delete")
+                <button type="submit"
+                    class="px-4 py-2 text-white bg-red-500 rounded cursor-pointer hover:bg-red-600 transition duration-300">
+                    삭제
+                </button>
+            </form>
+
+            <a href="/articles"
+                class="px-4 py-2 text-blue-500 border border-blue-500 rounded cursor-pointer hover:bg-blue-500 hover:text-white transition duration-300">
+                돌아가기
+            </a>
+        </div>
+    </div> <!-- .container -->
+    @endsection
+</body>
+
+</html>

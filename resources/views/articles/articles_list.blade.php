@@ -54,12 +54,18 @@
   </style>
 </head>
 <body>
+  {{-- 메뉴바 --}}
+  @extends('layouts.menuNavigation') 
+  @section('content')
+  {{-- @section('content') 이것들 사이에 내용(body) 적어야 함   @endsection --}}
+
   <table class="table">
     <thead>
       <tr>
         <th scope="col">글 번호</th>
         <th scope="col">제목</th>
         <th scope="col">작성자</th>
+        <th scope="col">인원수</th>
         <th scope="col">모이는 날</th>
       </tr>
     </thead>
@@ -69,18 +75,14 @@
         <td>{{$loop->index+1}}</td>
         <td><a href="/articles/{{$article->id}}">{{$article->title}}</a></td>
         <td>{{$article->user_id}}</td>
+        <td>{{$article->numberPeople}}</td>
         <td>{{$article->startDay}}</td>
       </tr>
       @endforeach
     </tbody>
   </table>
   
-  @if(Auth::check())
-    <button class="button"><a href="/articles/create">글쓰기</a></button>
-  @else
-    <button class="button"><a href="login">로그인후 글쓰러 가기</a></button>
-  @endif
   
-  <button class="button"><a href="/">HOME으로 가기</a></button>
+  @endsection
 </body>
 </html>
