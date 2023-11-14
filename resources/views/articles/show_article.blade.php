@@ -14,19 +14,7 @@
 
     @section('content')
     <!-- 페이지 내용 작성 -->
-    <div class="comment-container flex flex-col items-end">
-        <hr class="border-t-2 my-4">
-        <h4 class="mb-2">댓글등록</h4>
-        <form action="/articles/{{$article->id}}/comments" method="post">
-            @csrf
-            <div>
-                <textarea name="content" id="" cols="30" rows="1"
-                    class="w-full p-2 border rounded"></textarea>
-            </div>
-            <input type="submit" value="등록"
-                class="mt-2 px-4 py-2 text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-600 transition duration-300">
-        </form>
-    </div>
+    
 
     <div class="container max-w-2xl mx-auto p-8 bg-white shadow-md rounded-lg my-8">
         <div class="content title text-3xl font-bold mb-4">
@@ -71,28 +59,65 @@
         </div>
 
         <div class="flex justify-end mt-4 space-x-2">
-            <form action="/articles/{{$article->id}}/edit" method="get">
-                <button type="submit"
-                    class="px-4 py-2 text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-600 transition duration-300">
-                    수정
-                </button>
-            </form>
-
-            <form onsubmit='return confirm("정말 삭제 할꺼?")' action="/articles/{{$article->id}}" method="post">
-                @csrf
-                @method("delete")
-                <button type="submit"
-                    class="px-4 py-2 text-white bg-red-500 rounded cursor-pointer hover:bg-red-600 transition duration-300">
-                    삭제
-                </button>
-            </form>
-
+            @if(auth()->check() && auth()->user()->id == $article->user_id)
+                <form action="/articles/{{$article->id}}/edit" method="get">
+                    <button type="submit"
+                        class="px-4 py-2 text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-600 transition duration-300">
+                        수정
+                    </button>
+                </form>
+        
+                <form onsubmit='return confirm("정말 삭제 할꺼?")' action="/articles/{{$article->id}}" method="post">
+                    @csrf
+                    @method("delete")
+                    <button type="submit"
+                        class="px-4 py-2 text-white bg-red-500 rounded cursor-pointer hover:bg-red-600 transition duration-300">
+                        삭제
+                    </button>
+                </form>
+            @endif
+        
             <a href="/articles"
                 class="px-4 py-2 text-blue-500 border border-blue-500 rounded cursor-pointer hover:bg-blue-500 hover:text-white transition duration-300">
                 돌아가기
             </a>
         </div>
     </div> <!-- .container -->
+  
+    <div class="comment-container flex flex-col items-center">
+        <hr class="border-t-2 my-4">
+        <h4 class="mb-2">댓글등록</h4>
+        <form action="/articles/{{$article->id}}/comments" method="post">
+            @csrf
+            <!-- 사용자 ID를 댓글 작성 폼으로 전달 -->
+            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+            <input type="hidden" name="user_name" value="{{ auth()->user()->name }}">
+            <div>
+                <textarea name="content" id="" cols="30" rows="1" class="w-full p-2 border rounded"></textarea>
+            </div>
+            <input type="submit" value="등록" class="mt-2 px-4 py-2 text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-600 transition duration-300">
+        </form>
+        {{-- 댓글 보여주는 태그 --}}
+        <div class="comments-container mt-8 w-full max-w-2xl">
+            <h4 class="text-xl font-bold mb-4">댓글</h4>
+            @foreach ($comments as $comment)
+            <div class="comment mb-4 p-4 border rounded">
+                <p><strong>{{ $comment->user_name }}</strong>: {{ $comment->content }}</p>
+                <!-- 삭제 버튼 추가 -->
+                @if(auth()->check() && auth()->user()->id == $comment->user_id)
+                    <form onsubmit='return confirm("정말 삭제 할꺼?")' action="/articles/{{ $article->id }}/comments/{{ $comment->id }}" method="post">
+                        @csrf
+                        @method("delete")
+                        <button type="submit" class="text-red-500">삭제</button>
+                    </form>
+                @endif
+            </div>
+@endforeach
+        </div>
+    </div>
+    
+
+
     @endsection
 </body>
 

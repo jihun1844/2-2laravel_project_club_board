@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('content');
+            $table->string('user_name');
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             //어떤 유저의 아이디냐
             $table->foreignId('article_id')->constrained()->onDelete('cascade')->onUpdate('cascade');

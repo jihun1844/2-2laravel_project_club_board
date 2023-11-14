@@ -62,7 +62,9 @@ class ArtiController extends Controller
         //$article = Article::where('id', $id)->first();
         //$article = Article::firstWhere('id', $id);
 
-        return view('articles.show_article', ['article' => $article]);
+        $comments = $article->comments;
+        ;
+        return view('articles.show_article', ['article' => $article], compact('article', 'comments'));
     }
 
     /**

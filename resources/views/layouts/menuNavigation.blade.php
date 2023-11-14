@@ -16,6 +16,7 @@
       </li>
       <li class="space-x-4">
         <a href="/" class="hover:text-gray-300 transition duration-300">홈</a>
+        <a href="/articles" class="hover:text-gray-300 transition duration-300">모집 글 보러가기</a>
         @if(Auth::check())
           <a href="/articles/create" class="hover:text-gray-300 transition duration-300">글쓰기</a>
         @else
@@ -23,7 +24,7 @@
           <a href="login" onclick="return confirm('로그인 후 이용 가능한 서비스 입니다.  로그인 페이지로 이동합니다')" class="hover:text-gray-300 transition duration-300">글쓰기</a>
         @endif
         
-        <a href="#" class="hover:text-gray-300 transition duration-300">포트폴리오</a>
+        
         <a href="#" class="hover:text-gray-300 transition duration-300">문의</a>
       </li>
     </ul>
