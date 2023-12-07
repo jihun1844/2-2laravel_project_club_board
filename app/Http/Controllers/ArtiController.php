@@ -17,7 +17,8 @@ class ArtiController extends Controller
         // $articles = Article::all();
         // return view('articles.articles_list', ['articles'=>$articles]);
 
-        $articles = Article::orderByDesc('created_at')->get();//날짜순으로 정리
+        //$articles = Article::orderByDesc('created_at')->get();//날짜순으로 정리
+        $articles = Article::orderByDesc('created_at')->paginate(10);
 
         $count = $articles->count();
         //그렇게 읽어온 레코드들을 뷰페이지에 전달한다

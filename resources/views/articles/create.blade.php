@@ -9,7 +9,15 @@
 
     <!-- Tailwind CSS 라이브러리 추가 -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gaegu&family=Gamja+Flower&family=Poor+Story&display=swap');
+        div{
+            font-family: 'Gaegu', sans-serif;
+            
+            
+            font-size: 25px
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100">

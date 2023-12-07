@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\ArtiController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -55,4 +56,6 @@ Route::resource('/articles', ArtiController::class);
 
 //중첩 메소드로 정의, nested resource                          except()는 라우트에 맵핑을 빼라는 뜻
 Route::resource('/articles.comments', CommentController::class)->except(['create']);
- 
+
+Route::get('/myPage', [MyPageController::class, 'index']);
+//컨트롤러의 함수를 쓸려면 이렇게 정의를 해야함

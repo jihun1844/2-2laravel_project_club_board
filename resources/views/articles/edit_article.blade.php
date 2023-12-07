@@ -8,7 +8,18 @@
     <title>수정</title>
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gaegu&family=Gamja+Flower&display=swap');
+        div{
+            font-family: 'Gaegu', sans-serif;
+            font-family: 'Gamja Flower', sans-serif;
+            font-size: 25px
+        }
+        input {
+        border: 1px solid rgb(30, 255, 180); /* 파란색 테두리 추가 */
+        }
 
+    </style>
 </head>
 
 <body class="bg-gray-100">
@@ -71,8 +82,6 @@
         </form>
 
     </div>
-    <!-- .container -->
-
 </body>
 
 </html>

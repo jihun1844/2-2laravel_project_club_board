@@ -4,28 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
   <title>글 리스트</title>
   <style>
-    @font-face {
+     @font-face {
     
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCMurukmuruk.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCMurukmuruk.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
     }
     body {
+      
       background-color: #f2f2f2;
       margin: 0;
       padding: 20px;
-      
-      
     }
+    
     
     .table {
       width: 100%;
       max-width: 80%;
       margin: 0 auto;
-      margin-top: 4%;
+      margin-top: 20px;
       border-collapse: collapse;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -41,8 +40,9 @@
       padding: 15px;
       text-align: left;
       border-bottom: 1px solid #ddd;
-      font-size: 20px;
-      font-family: 'KCCMurukmuruk';
+      font-family: 'KCCMurukmuruk';  /* 폰트 바꾸기 (현재 안됨) */
+      font-size: 20px
+      
       
     }
     .table th{ /* 글번호, 제목, 작성자 등 라인 */
@@ -76,8 +76,19 @@
     }
 
     .pagination-container {
-    margin-top: 20px; /* */
-    margin-right: 47%;
+      margin-top: 20px; /* */
+      margin-right: 47%;
+    }
+    .title-container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .title-content {
+      font-size: 50px;
+      
+      border-bottom: 3px solid #39d7ff; /* 아래쪽에 1px 두께의 검은색 선을 그립니다. */
+      padding-bottom: 1px; /* 텍스트와 선 사이의 간격 조절 */
     }
   </style>
   
@@ -89,7 +100,11 @@
     @section('content')
     {{-- @section('content') 이것들 사이에 내용(body) 적어야 함   @endsection --}}
   </div>
-  
+    <div class="title-container">
+      <div class="title-content">
+        내가 작성한 글!
+      </div>
+    </div>
 
   <table class="table">
     <thead>
