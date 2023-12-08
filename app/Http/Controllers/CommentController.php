@@ -30,6 +30,13 @@ class CommentController extends Controller
     {
         //$request에서 content를 추출하고 comments테이블에 하나의 레코드로 삽입
         $content = $request->content;
+
+        if (empty(trim($content))) {
+            // 빈칸일 경우 알림 추가하고 이전 페이지로 리다이렉트
+            
+            return redirect()->back()->with('error', '댓글을 입력하세요.');
+        }
+
         $user_name = auth()->user()->name;
         $user_id = auth()->user()->id;
         // Eloquent Model을 이용해 db에 삽입하는 방법
@@ -41,7 +48,6 @@ class CommentController extends Controller
             'content' => $content,
             'user_name' => $user_name,
             'user_id' => $user_id,
-            //지금은 하드코딩
             'article_id' => $article_id
         ]);
 

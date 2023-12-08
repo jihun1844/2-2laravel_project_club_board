@@ -66,7 +66,7 @@
             </div>
 
             <button class="inline-block bg-blue-500 text-white py-2 px-4 rounded-md font-semibold" type="submit">등록</button>
-
+            <button class="inline-block bg-green-300 text-white py-2 px-4 rounded-md font-semibold"><a href="/articles">돌아가기</a></button>
         </form>
 
     </div>

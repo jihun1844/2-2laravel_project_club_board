@@ -37,7 +37,7 @@
 
             <div class="mb-4">
                 <label class="block">작성자:</label>
-                <input readonly type="text" value="{{$article->user_id}}" class="w-full p-2 rounded border bg-gray-300 cursor-not-allowed">
+                <input readonly type="text" value="{{$article->user->name}}" class="w-full p-2 rounded border bg-gray-300 cursor-not-allowed">
             </div>
 
             <div class="mb-4">
@@ -65,15 +65,14 @@
                 <textarea name="content" class="w-full p-2 rounded border">{{$article->content}}</textarea>
             </div>
 
-            <div class="mb-4">
-                <label class="block">생성일:</label>
-                <input readonly type="text" value="{{$article->created_at}}" class="w-full p-2 rounded border bg-gray-300 cursor-not-allowed">
-            </div>
+            {{-- 빈칸으로 댓글 작성시 애러 --}}
+        @if(session('error'))
+        <script>
+            alert("{{ session('error') }}");
+        </script>
+    @endif
 
-            <div class="mb-4">
-                <label class="block">수정일:</label>
-                <input readonly type="text" value="{{$article->updated_at}}" class="w-full p-2 rounded border bg-gray-300 cursor-not-allowed">
-            </div>
+            
 
             <div class="container mx-auto p-4 lg:max-w-lg text-center">
                 <input type="submit" value="수정" class="px-4 py-2 text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-600 transition duration-300">

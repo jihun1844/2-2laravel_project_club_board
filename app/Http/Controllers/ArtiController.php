@@ -90,6 +90,18 @@ class ArtiController extends Controller
 
         // $post->save(); //새로적을때, 있던것을 변경할때 모두 save
 
+        $reTitle = $request->title;
+        $reContent = $request->content;
+        $reRegion = $request->region;
+        $reNumberPeople = $request->numberPeople;
+
+    if (empty(trim($reTitle))||empty(trim($reContent))||empty(trim($reRegion))||empty(trim($reNumberPeople))) {
+        // 빈칸일 경우 알림 추가하고 이전 페이지로 리다이렉트
+        return redirect()->back()->with('error', '모든칸을 입력하세요. 빈칸으로 수정은 안됩니다');
+    }
+
+        
+
         Article::find($id)->update(['title' => $request->title,
                                     'content' => $request->content,
                                     'region'=>$request->region,

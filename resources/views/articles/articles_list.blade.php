@@ -94,7 +94,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">글 번호</th>
+        <th scope="col">지역</th>
         <th scope="col">제목</th>
         <th scope="col">작성자</th>
         <th scope="col">인원수</th>
@@ -104,7 +104,7 @@
     <tbody>
       @foreach($articles as $article)
       <tr class="tdbody">
-        <td>{{$loop->index+1}}</td>
+        <td>{{$article->region}}</td>
         <td><a href="/articles/{{$article->id}}">{{$article->title}}</a></td>
         <td>{{$article->user->name}}</td>
         <td>{{$article->numberPeople}}</td>
