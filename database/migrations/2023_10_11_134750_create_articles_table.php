@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->text('region');
             $table->text('content');
-            $table->text('numberPeople');
+            $table->integer('numberPeople');
+            $table->integer('people');
             $table->date('startDay');
             $table->date('returnDay');
             

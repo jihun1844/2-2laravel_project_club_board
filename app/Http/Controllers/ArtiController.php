@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\article;
 use App\Models\Post;
+use Illuminate\Auth\Access\Response;
+
 use Illuminate\Http\Request;
+use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\Auth;
 
 class ArtiController extends Controller
@@ -125,4 +128,6 @@ class ArtiController extends Controller
         //posts 리스트 보기
         return redirect('/articles');
     }
+
+  
 }

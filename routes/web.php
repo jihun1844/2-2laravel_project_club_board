@@ -59,3 +59,4 @@ Route::resource('/articles.comments', CommentController::class)->except(['create
 
 Route::get('/myPage', [MyPageController::class, 'index']);
 //컨트롤러의 함수를 쓸려면 이렇게 정의를 해야함
+

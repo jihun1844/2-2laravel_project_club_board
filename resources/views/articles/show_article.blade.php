@@ -71,7 +71,7 @@
         <div class="content info  mb-4">
             생성일 : {{$article->created_at}}
         </div>
-
+    
         {{-- 빈칸으로 댓글 작성시 애러 --}}
         @if(session('error'))
             <script>
@@ -140,9 +140,6 @@
             @endforeach
         </div>
     </div>
-    
-
-
     @endsection
 </body>
 
